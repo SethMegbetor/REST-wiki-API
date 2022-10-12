@@ -41,9 +41,25 @@ app.post("/articles", function (req, res) {
     title: req.body.title,
     content: req.body.content,
   });
-
-  newArticle.save();
+  newArticle.save(function (err) {
+    if (!err) {
+      res.send("Successfully added a new article")
+    } else {
+      res.send(err)
+    }
+  });
 });
+
+
+app.delete("/articles", function (req, res) {
+  Article.deleteMany(function (err) {
+    if (!err) {
+      res.send("Successfully deleted all articles")
+    } else {
+      res.send(err)
+    }
+  })
+})
 
 app.listen(PORT, () => {
   console.log(`Server started. Listening on ${PORT}`);
