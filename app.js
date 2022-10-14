@@ -35,6 +35,7 @@ app
       }
     });
   })
+  /****** when a post request is made to our api. when a user wants to add to the database *****/ 
   .post(function (req, res) {
     console.log();
     console.log();
@@ -52,6 +53,7 @@ app
       }
     });
   })
+/****** when a delete request is made to our api. when a user wants to delete to the database *****/
   .delete(function (req, res) {
     Article.deleteMany(function (err) {
       if (!err) {
@@ -77,6 +79,8 @@ app
       }
     );
   })
+
+  /****** when a put request is made to our api. when a user wants to replace an entire thing in the database *****/
   .put(function (req, res) {
     Article.findOneAndUpdate(
       { title: req.params.articleTitle },
@@ -89,6 +93,8 @@ app
       }
     );
   })
+
+  /****** when a patch request is made to our api. when a user wants to update part of the database *****/
   .patch(function (req, res) {
     Article.findOneAndUpdate(
       { title: req.params.articleTitle },
